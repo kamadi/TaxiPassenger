@@ -1,0 +1,458 @@
+<!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- As the main content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
+    <!--<FrameLayout android:id="@+id/container" android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
+
+    <!-- android:layout_gravity="start" tells DrawerLayout to treat
+         this as a sliding drawer on the left side for left-to-right
+         languages and on the right side for right-to-left languages.
+         If you're not building against API 17 or higher, use
+         android:layout_gravity="left" instead. -->
+    <!-- The drawer is given a fixed width in dp and extends the full height of
+         the container. -->
+    <LinearLayout
+        android:screenOrientation="portrait"
+        android:gravity="fill_vertical|center"
+        android:orientation="vertical"
+        android:id="@+id/MainContainer"
+        android:background="@color/Background"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:id="@+id/MapLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0.0dip">
+
+            <RelativeLayout
+                android:id="@+id/ParentMapLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="40.0dip"
+                android:layout_marginBottom="55.0dip">
+
+                <fragment
+                    android:id="@+id/map"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    class="kz.kamadi.passenger.map.CustomMapFragment"
+                    />
+
+
+
+                <View
+                    android:id="@+id/imageView123"
+                    android:background="@android:color/transparent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+
+                <RelativeLayout
+                    android:id="@+id/LeftMenuSlideLayout"
+                    android:background="@drawable/left_menu_slide"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true" />
+
+                <!--<RelativeLayout-->
+                    <!--android:id="@+id/ZoomButtonLayout"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="2.0dip"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:layout_centerVertical="true">-->
+
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/ZoomInButton"-->
+                        <!--android:background="@null"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginBottom="2.0dip"-->
+                        <!--android:src="@drawable/btn_zoom_in"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_alignParentRight="true" />-->
+
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/ZoomOutButton"-->
+                        <!--android:background="@null"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@drawable/btn_zoom_out"-->
+                        <!--android:layout_below="@+id/ZoomInButton"-->
+                        <!--android:layout_alignLeft="@+id/ZoomInButton" />-->
+                <!--</RelativeLayout>-->
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/InfoLayout"
+                android:background="@color/situation_bar"
+                android:layout_width="fill_parent"
+                android:layout_height="40.0dip">
+
+                <RelativeLayout
+                    android:id="@+id/InfoContentLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <ImageView
+                        android:id="@+id/LocationPointImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:src="@drawable/location_point"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:textSize="18.0sp"
+                        android:textColor="@color/Taxi_Yellow"
+                        android:ellipsize="marquee"
+                        android:id="@+id/CurrentLocationText"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_marginRight="50.0dip"
+                        android:text=""
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:freezesText="true"
+                        android:layout_toRightOf="@+id/LocationPointImage"
+                        android:layout_centerVertical="true"
+                        android:marqueeRepeatLimit="marquee_forever" />
+
+                    <ImageButton
+                        android:id="@+id/CurrentPositionButton"
+                        android:background="@null"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="0.0dip"
+                        android:src="@drawable/current_position"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/IncomingTaxiLayout"
+                android:background="@color/Background"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <RelativeLayout
+                    android:id="@+id/IncomingTaxiDriverInfoLayout"
+                    android:layout_width="100.0dip"
+                    android:layout_height="100.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true">
+
+                    <ImageView
+                        android:id="@+id/IncomingTaxiImage"
+                        android:layout_width="65.0dip"
+                        android:layout_height="65.0dip"
+                        android:layout_marginTop="5.0dip"
+                        android:src="@drawable/user_icon"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true" />
+
+                    <RelativeLayout
+                        android:background="@drawable/incoming_taxi_driver_name_bg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5.0dip"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true">
+
+                        <TextView
+                            android:textSize="12.0sp"
+                            android:textColor="@color/text_color"
+                            android:id="@+id/TaxiArrivalNameText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/TaxiArrivalLayout"
+                    android:visibility="visible"
+                    android:layout_width="150.0dip"
+                    android:layout_height="100.0dip"
+                    android:layout_toRightOf="@+id/IncomingTaxiDriverInfoLayout"
+                    android:layout_alignParentTop="true">
+
+                    <RelativeLayout
+                        android:id="@+id/IncomingTaxiInfoLayout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="20.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true">
+
+                        <ImageView
+                            android:id="@+id/IncomingTaxiLengthImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5.0dip"
+                            android:src="@drawable/incoming_length"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:textSize="12.0sp"
+                            android:textColor="@color/text_color"
+                            android:id="@+id/TaxiArrivalDistanceText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5.0dip"
+                            android:text=""
+                            android:layout_toRightOf="@+id/IncomingTaxiLengthImage"
+                            android:layout_centerVertical="true" />
+
+                        <ImageView
+                            android:id="@+id/IncomingTaxiTimeImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5.0dip"
+                            android:src="@drawable/incoming_time"
+                            android:layout_toLeftOf="@+id/TaxiArrivalDurationText"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:textSize="12.0sp"
+                            android:textColor="@color/text_color"
+                            android:id="@+id/TaxiArrivalDurationText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5.0dip"
+                            android:text=""
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:textSize="14.0sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/Taxi_Yellow"
+                        android:id="@+id/IncomingTaxiText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5.0dip"
+                        android:text="@string/main_map_page_taxi_arriving"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:textSize="18.0sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/White"
+                        android:id="@+id/IncomingTaxiPlate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0.0dip"
+                        android:text=""
+                        android:layout_below="@+id/IncomingTaxiText"
+                        android:layout_centerHorizontal="true" />
+
+                    <Button
+                        android:textSize="12.0sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/Black"
+                        android:id="@+id/CancelTripButton"
+                        android:background="@drawable/button_border_non_zero"
+                        android:layout_width="fill_parent"
+                        android:layout_height="20.0dip"
+                        android:layout_marginTop="2.0dip"
+                        android:text="@string/incoming_taxi_cancel_button_text"
+                        android:layout_below="@+id/IncomingTaxiPlate"
+                        android:layout_centerHorizontal="true" />
+
+                    <ImageView
+                        android:id="@+id/IncomingTaxiLineImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:src="@drawable/incoming_taxi_vertical_line"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/DriverCallLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100.0dip"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true">
+
+                    <ImageButton
+                        android:id="@+id/DriverCallButton"
+                        android:background="@null"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@xml/main_map_page_incoming_taxi_call_button_pressed"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/RouteLayout"
+                android:background="@color/situation_bar"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="40.0dip"
+                android:layout_alignTop="@+id/ParentMapLayout"
+                android:layout_alignParentLeft="true">
+
+                <RelativeLayout
+                    android:gravity="center"
+                    android:id="@+id/RouteContentLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <ImageView
+                        android:id="@+id/RoutePriceImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/price_yellow"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:textSize="13.0sp"
+                        android:textColor="@color/Taxi_Yellow"
+                        android:id="@+id/RoutePriceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5.0dip"
+                        android:text=""
+                        android:layout_toRightOf="@+id/RoutePriceImage"
+                        android:layout_centerVertical="true" />
+
+                    <ImageView
+                        android:id="@+id/RouteLengthImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30.0dip"
+                        android:src="@drawable/map_road"
+                        android:layout_toRightOf="@+id/RoutePriceText"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:textSize="13.0sp"
+                        android:textColor="@color/Taxi_Yellow"
+                        android:id="@+id/RouteDistanceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:text=""
+                        android:layout_toRightOf="@+id/RouteLengthImage"
+                        android:layout_alignBaseline="@+id/RoutePriceText"
+                        android:layout_alignBottom="@+id/RoutePriceText" />
+
+                    <ImageView
+                        android:id="@+id/RouteDistanceImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30.0dip"
+                        android:src="@drawable/time"
+                        android:layout_toRightOf="@+id/RouteDistanceText"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:textSize="13.0sp"
+                        android:textColor="@color/Taxi_Yellow"
+                        android:id="@+id/RouteDurationText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:text=""
+                        android:layout_toRightOf="@+id/RouteDistanceImage"
+                        android:layout_alignBaseline="@+id/RouteDistanceText"
+                        android:layout_alignBottom="@+id/RouteDistanceText" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="bottom"
+                android:orientation="vertical"
+                android:id="@+id/BottomImageLayout"
+                android:background="@drawable/boot_column"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:gravity="bottom"
+                android:id="@+id/BottomLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true">
+
+                <Button
+                    android:textSize="11.0sp"
+                    android:textStyle="bold"
+                    android:id="@+id/MapStartPointButton"
+                    android:background="@android:color/transparent"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0.0dip"
+                    android:text="@string/main_map_page_search_location"
+                    android:layout_weight="0.4" />
+
+                <ImageButton
+                    android:id="@+id/MapFindButton"
+                    android:background="@drawable/find_taxi_btn_calculator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0.0dip"
+                    android:scaleType="fitXY"
+                    android:layout_toRightOf="@+id/MapStartPointButton" />
+
+                <Button
+                    android:textSize="11.0sp"
+                    android:textStyle="bold"
+                    android:id="@+id/MapEndPointButton"
+                    android:background="@android:color/transparent"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0.0dip"
+                    android:text="@string/main_map_page_cancel_upper"
+                    android:layout_weight="0.4"
+                    android:layout_toRightOf="@+id/MapFindButton"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/navigation_drawer"
+        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:name="kz.kamadi.passenger.ui.NavigationDrawerFragment"
+        tools:layout="@layout/fragment_navigation_drawer" />
+
+</android.support.v4.widget.DrawerLayout>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:id="@+id/SelectPointsLayout"
+            android:background="@drawable/route_info_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="0.0dip"
+            android:layout_marginRight="0.0dip">
+
+            <RelativeLayout
+                android:id="@+id/MainMapRouteInfo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0.0dip"
+                android:layout_alignParentLeft="true">
+
+                <RelativeLayout
+                    android:gravity="center"
+                    android:id="@+id/StartPointTitleLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:layout_marginTop="0.0dip"
+                    android:layout_alignParentLeft="true">
+
+                    <TextView
+                        android:textSize="18.0sp"
+                        android:textStyle="normal"
+                        android:textColor="@color/Taxi_Yellow"
+                        android:id="@+id/StartPointTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0.0dip"
+                        android:text="@string/main_map_page_startpoint"
+                        android:layout_centerVertical="true" />
+
+                    <ImageView
+                        android:id="@+id/StartPointImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3.0dip"
+                        android:src="@drawable/search_start_point"
+                        android:scaleType="center"
+                        android:layout_toRightOf="@+id/StartPointTitle" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/StartPointTextLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0.0dip"
+                android:layout_below="@+id/MainMapRouteInfo"
+                android:layout_alignParentLeft="true">
+
+                <kz.kamadi.passenger.adapter.DelayAutoCompleteTextView
+                    android:textSize="15.0sp"
+                    android:textColor="#ffffffff"
+                    android:gravity="center"
+                    android:id="@+id/StartPointTextFixed"
+                    android:background="@drawable/textview_border_bottoms_zero"
+                    android:paddingLeft="5.0dip"
+                    android:paddingRight="5.0dip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20.0dip"
+                    android:layout_marginRight="20.0dip"
+                    android:hint="@string/select_points_search_start_point"
+                    android:maxLines="2"
+                    android:lines="2"
+                    android:height="50.0dip"
+                    android:ems="10"
+                    android:popupBackground="@drawable/textview_border_bottoms_zero"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:imeOptions="actionNext" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_start"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/StartPointTextFixed"
+                    android:layout_alignTop="@+id/StartPointTextFixed"
+                    android:visibility="gone"
+                    android:paddingTop="14dip"
+                    android:paddingRight="10dip"
+                   />
+
+                <Button
+                    android:id="@+id/StartPointSelectFromMapButton"
+                    android:background="@drawable/button_border_tops_zero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40.0dip"
+                    android:layout_marginLeft="20.0dip"
+                    android:layout_marginRight="20.0dip"
+                    android:text="@string/select_points_select_from_the_map"
+                    android:layout_below="@id/StartPointTextFixed"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <Button
+                    android:id="@+id/CurrentLocationButton"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_points_current_position"
+                    android:layout_below="@+id/StartPointSelectFromMapButton"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <Button
+                    android:id="@+id/PointFromMapButton"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_points_point_on_the_map"
+                    android:layout_below="@+id/CurrentLocationButton"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/EndPointTextLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0.0dip"
+                android:layout_below="@+id/StartPointTextLayout"
+                android:layout_alignParentLeft="true">
+
+                <RelativeLayout
+                    android:gravity="center"
+                    android:id="@+id/EndPointTitleLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:layout_marginTop="0.0dip"
+                    android:layout_alignParentLeft="true">
+
+                    <TextView
+                        android:textSize="20.0sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/Taxi_Yellow"
+                        android:id="@+id/EndPointTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/main_map_page_endpoint"
+                        android:layout_centerVertical="true" />
+
+                    <ImageView
+                        android:id="@+id/EndPointImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3.0dip"
+                        android:src="@drawable/search_end_point"
+                        android:scaleType="center"
+                        android:layout_toRightOf="@+id/EndPointTitle" />
+                </RelativeLayout>
+
+                <kz.kamadi.passenger.adapter.DelayAutoCompleteTextView
+                    android:textSize="15.0sp"
+                    android:textColor="#ffffffff"
+                    android:gravity="center"
+                    android:id="@+id/EndPointText"
+                    android:background="@drawable/textview_border_bottoms_zero"
+                    android:paddingLeft="5.0dip"
+                    android:paddingRight="5.0dip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20.0dip"
+                    android:layout_marginRight="20.0dip"
+                    android:hint="@string/select_points_search_end_point"
+                    android:maxLines="2"
+                    android:lines="2"
+                    android:height="50.0dip"
+                    android:ems="10"
+                    android:popupBackground="@drawable/textview_border_bottoms_zero"
+                    android:layout_below="@+id/EndPointTitleLayout"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:imeOptions="actionNext" />
+                <ProgressBar
+                    android:id="@+id/progress_bar_end"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/EndPointText"
+                    android:layout_alignTop="@+id/EndPointText"
+                    android:visibility="gone"
+                    android:paddingTop="14dip"
+                    android:paddingRight="10dip"
+                    />
+
+                <Button
+                    android:id="@+id/EndPointSelectFromMapButton"
+                    android:background="@drawable/button_border_tops_zero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40.0dip"
+                    android:layout_marginLeft="20.0dip"
+                    android:layout_marginRight="20.0dip"
+                    android:text="@string/select_points_select_from_the_map"
+                    android:layout_below="@+id/EndPointText"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/MainMapRouteInfoButtonLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30.0dip"
+                android:layout_alignParentBottom="true">
+
+                <Button
+                    android:textSize="20.0sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/Black"
+                    android:id="@+id/OKButton"
+                    android:background="@drawable/button_border_rights_zero"
+                    android:layout_width="100.0dip"
+                    android:layout_height="40.0dip"
+                    android:layout_marginLeft="20.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:text="@string/select"
+                    android:layout_weight="0.5" />
+
+                <Button
+                    android:textSize="20.0sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/Black"
+                    android:id="@+id/CancelButton"
+                    android:background="@drawable/button_border_lefts_zero"
+                    android:layout_width="100.0dip"
+                    android:layout_height="40.0dip"
+                    android:layout_marginLeft="0.0dip"
+                    android:layout_marginRight="20.0dip"
+                    android:text="@string/cancel_button_text"
+                    android:layout_weight="0.5"
+                    android:layout_toRightOf="@+id/OKButton" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
